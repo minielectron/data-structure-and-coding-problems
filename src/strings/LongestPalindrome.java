@@ -57,6 +57,6 @@ public class LongestPalindrome {
             }
         }
 
-        return size + 1;
+        return set.size() == 0 ? size : size + 1;
     }
 }
