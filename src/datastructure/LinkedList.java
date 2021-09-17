@@ -91,11 +91,27 @@ public class LinkedList {
             this.val = val;
         }
     }
-//
-//    public ListNode evenPartition() {
-//
-//    }
 
+    public ListNode removeKthToLast(int k) throws IllegalArgumentException{
+        ListNode previousElement = head;
+        ListNode temp = head;
+        for (int i = 0; i < k ; i++){
+            if (temp == null && temp.next == null) {
+                throw new IllegalArgumentException("The element not found");
+            }else {
+                temp = temp.next;
+            }
+        }
+
+        while (temp.next != null){
+            previousElement = previousElement.next;
+            temp = temp.next;
+        }
+
+        previousElement.next = previousElement.next.next;
+
+        return head;
+    }
 
     @Override
     public String toString() {
@@ -115,6 +131,7 @@ public class LinkedList {
         l.addAtTail(30);
         l.addAtTail(40);
         l.addAtTail(50);
+        l.removeKthToLast(3);
         System.out.println(l.toString());
     }
 }

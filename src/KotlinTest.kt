@@ -9,3 +9,4 @@ fun main() {
     println(DAY.FIRST.value)
 
 }
+
