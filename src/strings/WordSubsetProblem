@@ -1,0 +1,59 @@
+package strings;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Given 2 sequences of strings A and B, determine all of the "universal"
+ * characters in A relative to B. Return the list of these universal characters.
+ * A string a in A is "universal" relative to B if for each string in B (we will name b)
+ * a is a superset of b. This means that a has all of the characters in each b (ignoring order)
+ * in quantity at least.
+ * A = ["orange", "room", "more"]
+ * B = ["rm", "oo"]
+ * <p>
+ * Output: ["room"]
+ */
+
+public class WordSubsetProblem {
+
+    public static void main(String[] args) {
+        String[] A = {"orange", "room", "more"};
+        String[] B = {"rm", "00"};
+        findSuperSets(A, B);
+    }
+
+    static ArrayList<String> findSuperSets(String[] A, String[] B) {
+        ArrayList output = new ArrayList<String>();
+
+        // Merge the B into single word.
+        String mergedWord = mergeSets(B);
+
+        // Iterate and test for each word in A
+        System.out.println(mergedWord);
+        return output;
+    }
+
+    private static String mergeSets(String[] b) {
+        Map<String, Integer> countMap = new HashMap<>();
+        for (String word : b) {
+            for (int i = 0; i < word.length(); i++) {
+                String s = String.valueOf(word.charAt(i));
+                int count = (int) word.codePoints().filter(ch -> ch == s.charAt(0)).count();
+                if (!countMap.containsKey(s)) {
+                    countMap.put(s, count);
+                } else {
+                    countMap.put(s, Math.max(countMap.get(s), count));
+                }
+            }
+        }
+
+        StringBuilder output = new StringBuilder();
+        for (var entry : countMap.entrySet()) {
+            var key = entry.getKey();
+            output.append(key.repeat(countMap.get(key)));
+        }
+        return output.toString();
+    }
+}

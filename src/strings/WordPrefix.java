@@ -1,7 +1,6 @@
 package strings;
 
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 
 /*
 Given a list of prefixes prefixes and a sentence sentence, replace all words in sentence that start with any of the given prefixes in prefixes.
@@ -19,6 +18,9 @@ public class WordPrefix {
 
         System.out.println(replacePrefix(new String[]{"cat", "catch", "Alabama"},
                 "The cat were cat yarn"));
+        List<String> A = List.of("padding", "css", "randomcs");
+        List<String> B = List.of("cs", "c");
+        System.out.println(wordSubsets(A, B));
     }
 
     public static String replacePrefix(String[] prefixes, String sentence) {
@@ -53,6 +55,58 @@ public class WordPrefix {
         public int compare(String o1, String o2) {
             return o1.length() - o2.length();
         }
+    }
+
+    public static ArrayList<String> wordSubsets(List<String> A, List<String> B) {
+        ArrayList<String> output = new ArrayList<>();
+
+        // Merge the B into single word.
+        String mergedWord = mergeSets(B);
+
+        for (String s : A) {
+            if (ifSubset(s, mergedWord)) {
+                output.add(s);
+            }
+        }
+        // Iterate and test for each word in A
+        System.out.println(mergedWord);
+        return output;
+    }
+
+    static boolean ifSubset(String superset, String subset) {
+
+        if (superset.length() < subset.length()) return false;
+
+        for (int i = 0; i < subset.length(); i++) {
+            var c = subset.charAt(i);
+            var actualCount = superset.codePoints().filter(ch -> ch == c).count();
+            var expectedCount = subset.codePoints().filter(ch -> ch == c).count();
+
+            if (actualCount < expectedCount) return false;
+        }
+        return true;
+    }
+
+    private static String mergeSets(List<String> b) {
+        Map<String, Integer> countMap = new HashMap<>();
+        for (String word : b) {
+            for (int i = 0; i < word.length(); i++) {
+                String s = String.valueOf(word.charAt(i));
+                int count = (int) word.codePoints().filter(ch -> ch == s.charAt(0)).count();
+                if (!countMap.containsKey(s)) {
+                    countMap.put(s, count);
+                } else {
+                    countMap.put(s, Math.max(countMap.get(s), count));
+                }
+            }
+        }
+
+        StringBuilder output = new StringBuilder();
+        for (var entry : countMap.entrySet()) {
+            var key = entry.getKey();
+            output.append(key.repeat(countMap.get(key)));
+        }
+        return output.toString();
     }
 
 }
