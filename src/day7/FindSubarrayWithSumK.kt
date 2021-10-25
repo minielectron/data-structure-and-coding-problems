@@ -2,7 +2,7 @@ package day7
 
 import kotlin.math.min
 
-// Problem: You are given with an array [1,4,5,3,6,8,4,0,8]
+// Problem: You are given with an datastructure.array [1,4,5,3,6,8,4,0,8]
 // 1. find the subarray of length 3 whose sum is equal to 12. // fixed length problem
 // 2. find the minimum subarray whose sum is equal to 12. // dynamic window size length problem
 // 3. find how many subarray whose sum is equal to 12. // dynamic window size length problem
@@ -23,7 +23,7 @@ fun fixedSizeSubArraySum(arr : IntArray, targetSum : Int) : Int{
         }
     }
 
-    return -1 // If no array found
+    return -1 // If no datastructure.array found
 }
 
 
@@ -87,7 +87,7 @@ fun main(){
 //    if (size == Integer.MAX_VALUE){
 //        println("No subarray found")
 //    }else{
-//        print("Size of array whose sum is 12 : $size")
+//        print("Size of datastructure.array whose sum is 12 : $size")
 //    }
 
     // case 3:

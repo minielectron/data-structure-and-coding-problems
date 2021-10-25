@@ -1,4 +1,4 @@
-package datastructure;
+package datastructure.queue;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -25,7 +25,7 @@ public class CircularQueue
       /*
         Adjust the tail - the new conceptual index is
         +1 the original tail, then we wrap that value
-        around the array with the % operator
+        around the datastructure.array with the % operator
       */
         tail = (tail + 1) % queue.length;
         size++;
@@ -61,7 +61,7 @@ public class CircularQueue
 
       /*
         Resize by the scaling factor (all old items are copied over
-        to a newly sized array)
+        to a newly sized datastructure.array)
       */
         queue = Arrays.copyOf(queue, size * SCALE_FACTOR);
     }

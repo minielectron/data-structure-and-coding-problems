@@ -27,7 +27,7 @@ class UndoRedoEditor {
 
     public String performEditorActions(String[][] actions) {
 
-        //Creating a string builder as strings are immutable in java
+        //Creating a string builder as datastructure.strings are immutable in java
         StringBuilder sb = new StringBuilder();
 
         Stack<Action> undo = new Stack<>(); // Track the most recent actions that we want to undo

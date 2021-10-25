@@ -1,11 +1,11 @@
-package strings;
+package datastructure.strings;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Given 2 sequences of strings A and B, determine all of the "universal"
+ * Given 2 sequences of datastructure.strings A and B, determine all of the "universal"
  * characters in A relative to B. Return the list of these universal characters.
  * A string a in A is "universal" relative to B if for each string in B (we will name b)
  * a is a superset of b. This means that a has all of the characters in each b (ignoring order)

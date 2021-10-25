@@ -1,4 +1,4 @@
-package strings;
+package datastructure.strings;
 
 public class AddBinaryStrings {
 
@@ -8,11 +8,11 @@ public class AddBinaryStrings {
     }
 
     public String addBinaryStrings(String s1, String s2) {
-        /* We use two pointers to traverse our two strings in reverse order. */
+        /* We use two pointers to traverse our two datastructure.strings in reverse order. */
         int i = s1.length() - 1;
         int j = s2.length() - 1;
 
-        /* We will construct our answer as we traverse the strings. */
+        /* We will construct our answer as we traverse the datastructure.strings. */
 
         StringBuilder sb = new StringBuilder();
         int carry = 0;

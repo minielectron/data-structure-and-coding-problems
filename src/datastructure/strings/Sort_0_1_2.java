@@ -1,4 +1,4 @@
-package strings;
+package datastructure.strings;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -42,7 +42,7 @@ public class Sort_0_1_2 {
         // For counting 0,1 and 2 respectively
         int count0 = 0, count1 = 0, count2 = 0;
 
-        //Iterate through the array and count the frequencies of each number
+        //Iterate through the datastructure.array and count the frequencies of each number
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 0) {
                 count0++;
@@ -55,7 +55,7 @@ public class Sort_0_1_2 {
             }
         }
 
-        //Fill the original array
+        //Fill the original datastructure.array
         //First fill all 0, then 1 and at last 2
         for (int i = 0; i < nums.length; i++) {
             if (i < count0) {

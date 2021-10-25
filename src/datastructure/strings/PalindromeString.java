@@ -1,4 +1,4 @@
-package strings;
+package datastructure.strings;
 
 public class PalindromeString {
 

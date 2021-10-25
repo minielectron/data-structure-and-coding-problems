@@ -1,6 +1,6 @@
-package datastructure;
+package datastructure.list;
 /*
-We are given an array buildings of integers. Each item represents the height of a building on a skyline from left to right.
+We are given an datastructure.array buildings of integers. Each item represents the height of a building on a skyline from left to right.
 
         Here are the details:
         The sun sits on the far left

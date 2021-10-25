@@ -1,4 +1,4 @@
-package datastructure;
+package datastructure.list;
 
 public class LinkedList {
     ListNode head;
@@ -9,7 +9,7 @@ public class LinkedList {
     }
 
     // O(n)
-    public int get(int index) {
+    public int getElementAtIndex(int index) {
         if (index < 0 || index >= this.size) {
             return -1;
         }

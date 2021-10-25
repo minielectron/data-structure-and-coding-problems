@@ -1,7 +1,7 @@
 package day8
 
 
-// Problem : Given an array of integers, you have find if there are two numbers whose sum is equal to k.
+// Problem : Given an datastructure.array of integers, you have find if there are two numbers whose sum is equal to k.
 // 2 Sum - k=2
 class subarraySumAlgorithm {
 

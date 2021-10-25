@@ -46,7 +46,7 @@ public class JobSequencing {
             }
         }
 
-        // Create a array of deadlines
+        // Create a datastructure.array of deadlines
         String[] schedule = new String[max];
 
         // Sort the Jobs

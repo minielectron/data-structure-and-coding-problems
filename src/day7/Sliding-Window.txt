@@ -1,5 +1,5 @@
 We are learning a new technique known as sliding window technique, this technique is useful for
-linear data structure problems such as array base, list based, stack, queue etc.
+linear data structure problems such as datastructure.array base, list based, stack, queue etc.
 
 There are two types of this technique:
 
@@ -9,7 +9,7 @@ Usually we need kind of variables to maintain the state of the window, some are 
 integer or it could be as complicated as some advanced data structure such as list, queue or deque.
 
 2.Two pointers + criteria: the window size is not fixed, usually it asks you to find the subarray
-that meets the criteria, for example, given an array of integers, find the number of subarrays
+that meets the criteria, for example, given an datastructure.array of integers, find the number of subarrays
 whose sum is equal to a target value.
 
 

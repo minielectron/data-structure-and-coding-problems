@@ -1,7 +1,7 @@
 package day9
 
 /*
-Given two strings s1 and s2 consisting of digits between 0 to 9, return a string
+Given two datastructure.strings s1 and s2 consisting of digits between 0 to 9, return a string
 representing the sum of s1 and s2 when they are considered as base-10 decimal numbers.
 Example #1:
 Input: s1 = "95", s2 = "7"
@@ -10,7 +10,7 @@ Explanation: The sum of 95 and 7 is 102.
 
 Constraints:
 You may not use any built-in methods that trivialize the problem (e.g. BigInteger methods),
-and you may not convert the strings to integers.*/
+and you may not convert the datastructure.strings to integers.*/
 
 
 fun main(){

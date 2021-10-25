@@ -1,4 +1,4 @@
-package strings;
+package datastructure.strings;
 
 import java.util.Collection;
 import java.util.HashMap;

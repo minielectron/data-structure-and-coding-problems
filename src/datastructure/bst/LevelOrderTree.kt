@@ -1,4 +1,4 @@
-package datastructure
+package datastructure.bst
 
 import java.util.*
 
@@ -17,7 +17,7 @@ class Tree {
             head = Node(data, null, null)
             temp = head
         } else {
-            val q: Queue<Node?> = LinkedList<Node?>()
+            val q: Queue<Node?> = LinkedList()
             q.add(head)
             while (!q.isEmpty()) {
                 temp = q.remove()
@@ -74,8 +74,8 @@ class Tree {
 
     /**
     * Root To Leaf Path Sum
-    * Give a binary tree and a target sum sum, determine if
-    * there is a path from the root to a leaf that sums to the target sum sum.
+    * Give a binary tree and a target sum, determine if
+    * there is a path from the root to a leaf that sums to the target sum.
     * */
 //    fun hasPathSum(node: Node, targetSum: Int): Boolean {
 //        return false

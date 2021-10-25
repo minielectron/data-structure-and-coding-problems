@@ -12,7 +12,7 @@ public class Basics {
         int arr[] = new int[10]; // by default it will be initialized with zero
         System.out.println(Arrays.toString(arr));
 //        b.x[5] = 218; // will throw index out of bound exception
-        b.x[4] = 218; // Assign 218 to last position in the array
+        b.x[4] = 218; // Assign 218 to last position in the datastructure.array
         System.out.println(Arrays.toString(b.x));
 //        b.y[3] = 29388; // will give null pointer exception
         b.y = new int[10];

@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class CountSubArrayWithSumK {
 
-    /*Given an array of integers arr and an integer value k, return the total
+    /*Given an datastructure.array of integers arr and an integer value k, return the total
     amount of unique, contiguous, subarrays that sum to k in arr.*/
     public static void main(String[] args) {
         System.out.println(countSubarrays(new int[]{1, 0, -1, 1}, 0));

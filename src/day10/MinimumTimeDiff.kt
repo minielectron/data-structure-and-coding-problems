@@ -3,7 +3,7 @@ package day10
 import kotlin.math.abs
 
 /*
-Given an array of time strings times, return the smallest difference between any two times
+Given an datastructure.array of time datastructure.strings times, return the smallest difference between any two times
 in minutes.
 
 Example:
@@ -13,7 +13,7 @@ Input: The closest 2 times are "00:03" and "23:59" (by wrap-around), and they di
 4 minutes.
 
 Constraints:
-All strings will be non-empty and in the format HH:mm
+All datastructure.strings will be non-empty and in the format HH:mm
 */
 
 

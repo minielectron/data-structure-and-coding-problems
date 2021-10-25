@@ -1,4 +1,4 @@
-package datastructure;
+package datastructure.stack;
 
 import java.util.Stack;
 
@@ -6,7 +6,7 @@ public class ValidParenthesis {
 
     public static void main(String[] args) {
         ValidParenthesis v = new ValidParenthesis();
-        System.out.println(v.isValid(")"));
+        System.out.println(v.isValid("()(){){()}()((({})))"));
     }
 
     public boolean isValid(String s) {
@@ -21,10 +21,22 @@ public class ValidParenthesis {
                     characters.push(c);
                     break;
                 case ')':
+                    if (characters.isEmpty()) return false;
+                    if('(' != characters.pop()) {
+                        return false;
+                    }
+                    break;
                 case '}':
+                    if (characters.isEmpty()) return false;
+                    if('{' != characters.pop()) {
+                        return false;
+                    }
+                    break;
                 case ']':
                     if (characters.isEmpty()) return false;
-                    characters.pop();
+                    if('[' != characters.pop()) {
+                        return false;
+                    }
                     break;
                 default:
                     throw new IllegalArgumentException("The input is not valid");
