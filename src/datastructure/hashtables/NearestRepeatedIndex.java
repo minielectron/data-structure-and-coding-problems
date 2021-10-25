@@ -8,22 +8,16 @@ public class NearestRepeatedIndex {
     public int distanceOfClosestRepeatedEntries(String[] sentence) {
 
         Map<String, Integer> words = new Hashtable<>();
-        ArrayList<Integer> output = new ArrayList<>();
+        int closest = Integer.MAX_VALUE;
         for (int i = 0; i < sentence.length; i++) {
             if (words.containsKey(sentence[i])) {
                 var index = words.get(sentence[i]);
-                output.add(i - index);
+                if (closest > i - index)
+                    closest = i - index;
             }
             words.put(sentence[i], i);
         }
-
-        if (!output.isEmpty()) {
-            int min = output.get(0);
-            for (int i = 1; i < output.size(); i++) {
-                if (output.get(i) < min) min = output.get(i);
-            }
-            return min;
-        } else return -1;
+        return closest == Integer.MAX_VALUE ? -1 : closest;
     }
 
     public static void main(String[] args) {
