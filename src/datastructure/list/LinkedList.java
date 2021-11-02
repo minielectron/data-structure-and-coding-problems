@@ -124,6 +124,43 @@ public class LinkedList {
         return "LinkedList{" + res + '}';
     }
 
+    public ListNode rotateRight(ListNode head, int k) {
+        if (head == null) {
+            return head;
+        }
+
+        // Find the tail and list length (so we can adjust k)
+        ListNode tail = head;
+        int size = 1;
+        while (tail.next != null) {
+            size++;
+            tail = tail.next;
+        }
+
+        // Normalize k
+        k %= size;
+
+        // If k normalizes to 0, we just return the same head
+        if (k == 0) {
+            return head;
+        }
+
+        // Create a cycle we can traverse, we will break this later
+        tail.next = head;
+
+        int stepsToNewTail = size - k;
+        ListNode rotatedListTail = tail;
+        while (stepsToNewTail > 0) {
+            rotatedListTail = rotatedListTail.next;
+            stepsToNewTail--;
+        }
+
+        ListNode rotatedListHead = rotatedListTail.next; // The head we return
+        rotatedListTail.next = null; // Cut off cycle
+
+        return rotatedListHead;
+    }
+
     public static void main(String[] args) {
         LinkedList l = new LinkedList();
         l.addAtHead(10);
@@ -131,7 +168,10 @@ public class LinkedList {
         l.addAtTail(30);
         l.addAtTail(40);
         l.addAtTail(50);
-        l.removeKthToLast(3);
-        System.out.println(l.toString());
+        ListNode node = l.rotateRight(l.head, 2);
+        while (node != null){
+            System.out.println(node.val);
+            node = node.next;
+        }
     }
 }
