@@ -8,15 +8,29 @@ package top150.primitives;
 public class AddStrings {
 
 
-    int sum(String first, String second){
-        int sum = 0;
-
+    public static void main(String[] args) {
+        String sum = sum("12345","12345");
+        System.out.println(sum);
+    }
+    static String sum(String first, String second){
+        StringBuilder sum = new StringBuilder();
+        int carry = 0;
         int n = Math.max(first.length(), second.length());
-
-        for (int i = 0 ; i < n ; i++){
-
+        int smallString = Math.min(first.length(), second.length());
+        for (int i = 0 ; i < smallString ; i++){
+            int charSum = first.charAt(i) + second.charAt(i) + carry;
+            carry = charSum/10;
+            sum = new StringBuilder(charSum).append(sum);
         }
 
-        return sum;
+        if (n > smallString){
+            for (int i = smallString; i < n; i++){
+                int charSum = first.charAt(i) + second.charAt(i) + carry;
+                carry = charSum/10;
+                sum = new StringBuilder(charSum).append(sum);
+            }
+        }
+
+        return sum.toString();
     }
 }

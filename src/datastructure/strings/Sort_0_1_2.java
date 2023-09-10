@@ -24,12 +24,12 @@ public class Sort_0_1_2 {
     static void print(String s, String filename) {
         File file = new File(filename);
         try {
-            file.createNewFile();
-            FileWriter writer = new FileWriter(file);
-            writer.append("Next");
-            writer.append(s);
-            writer.close();
-
+            if (file.createNewFile()){
+                FileWriter writer = new FileWriter(file);
+                writer.append("Next");
+                writer.append(s);
+                writer.close();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
