@@ -19,7 +19,7 @@ public class LinkedList {
             curr = curr.next;
         }
 
-        return curr.val;
+        return curr.data;
     }
 
     // O(1)
@@ -80,17 +80,7 @@ public class LinkedList {
         size--;
     }
 
-    private static class ListNode {
-        int val;
-        ListNode next;
 
-        public ListNode() {
-        }
-
-        public ListNode(int val) {
-            this.val = val;
-        }
-    }
 
     public ListNode removeKthToLast(int k) throws IllegalArgumentException{
         ListNode previousElement = head;
@@ -118,7 +108,7 @@ public class LinkedList {
         ListNode workingPointer = head.next;
         StringBuilder res = new StringBuilder();
         while (workingPointer != null) {
-            res.append(workingPointer.val).append(", ");
+            res.append(workingPointer.data).append(", ");
             workingPointer = workingPointer.next;
         }
         return "LinkedList{" + res + '}';
@@ -170,8 +160,9 @@ public class LinkedList {
         l.addAtTail(50);
         ListNode node = l.rotateRight(l.head, 2);
         while (node != null){
-            System.out.println(node.val);
+            System.out.println(node.data);
             node = node.next;
         }
     }
 }
+

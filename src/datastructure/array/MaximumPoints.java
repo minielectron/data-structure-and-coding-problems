@@ -11,7 +11,6 @@ import java.util.Arrays;
  * */
 public class MaximumPoints {
 
-
     public static void main(String[] args) {
         int[] input = {1,2,3,4};
         int n = findMaximumPoints(input);
@@ -31,5 +30,8 @@ public class MaximumPoints {
         return sum + right;
     }
 
+    private int findMaximumPointsByCopilot() {
+        return 0;
+    }
 
 }
