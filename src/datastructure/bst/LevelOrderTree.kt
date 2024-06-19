@@ -20,7 +20,7 @@ class Tree {
             val q: Queue<Node?> = LinkedList()
             q.add(head)
             while (!q.isEmpty()) {
-                temp = q.remove()
+                temp = q.poll()
                 if (temp?.left == null) {
                     temp!!.left = Node(data)
                     break

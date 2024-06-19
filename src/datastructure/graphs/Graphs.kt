@@ -10,11 +10,15 @@ class Graphs(private val nodes: Int) {
     private val graph = Array(nodes) { ArrayList<Edge>() } // Fixed array size to 'nodes'
 
     fun createGraph() {
-        graph[0].add(Edge(0, 2, 2))
-        graph[0].add(Edge(0, 3, 4))
-        graph[1].add(Edge(1, 0, 7))
-        graph[2].add(Edge(2, 1, 3))
-        graph[3].add(Edge(3, 4, 1))
+        graph[0].add(Edge(0, 1, 2))
+        graph[0].add(Edge(0, 2, 4))
+        graph[1].add(Edge(1, 3, 7))
+        graph[1].add(Edge(1, 2, 1))
+        graph[2].add(Edge(2, 4, 3))
+        graph[3].add(Edge(3, 5, 1))
+        graph[4].add(Edge(4, 3, 2))
+        graph[4].add(Edge(4, 5, 5))
+        graph[5].add(Edge(3, 4, 1))
     }
 
     fun bfs() {
@@ -138,11 +142,15 @@ class Graphs(private val nodes: Int) {
     }
 
     fun dijkstraAlgorithm(src: Int) {
+
+        // Why pq ? It reduces the time complexity to O((V+E)logV) from O(N^2)
         val pq = PriorityQueue<VertexPair>()
         val visited = BooleanArray(graph.size) { false }
         // Here we are tricking which will work in case starting node is zero but won't work for others.
         pq.add(VertexPair(src, 0))
-        val distance = IntArray(graph.size)
+        val distance = IntArray(graph.size){0}
+
+        // Do not src nodes to max as it will be always 0
         for (i in distance.indices) {
             if (i != src) {
                 distance[i] = Int.MAX_VALUE
@@ -159,7 +167,7 @@ class Graphs(private val nodes: Int) {
                 val u = edge.source
                 val v = edge.destination
 
-                // Relaxation step
+                // Relaxation step -> update the distance if previous distance is more than current
                 if (distance[u] + edge.weight < distance[v]) {
                     distance[v] = distance[u] + edge.weight
                     pq.add(VertexPair(v, distance[v]))
@@ -315,8 +323,9 @@ class VertexPair(val node: Int, val distance: Int) : Comparable<VertexPair> {
 
 fun main() {
 
-    val graph = Graphs(5)
+    val graph = Graphs(6)
     graph.createGraph()
+    graph.dijkstraAlgorithm(0)
 //    graph.bfs()
 //    val visited = BooleanArray(graph.size()) { false }
 //    visited.forEachIndexed { index, value ->
@@ -343,5 +352,5 @@ fun main() {
 
 //    graph.bellmanfordAlgo(0)
 //    graph.primsMst(0)
-    graph.kosarajuAlgorithm()
+//    graph.kosarajuAlgorithm()
 }

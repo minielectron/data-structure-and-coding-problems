@@ -19,8 +19,9 @@ public class Codeforce116A {
 }
 
 /*
-* 4
+4
 0 3
 2 5
 4 2
-4 0*/
+4 0
+*/

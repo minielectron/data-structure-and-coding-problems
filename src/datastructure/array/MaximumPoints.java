@@ -30,8 +30,4 @@ public class MaximumPoints {
         return sum + right;
     }
 
-    private int findMaximumPointsByCopilot() {
-        return 0;
-    }
-
 }

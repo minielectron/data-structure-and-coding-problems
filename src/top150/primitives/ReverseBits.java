@@ -21,8 +21,8 @@ public class ReverseBits {
 
     public static void main(String[] args) {
         ReverseBits r = new ReverseBits();
-        System.out.println(r.reverseBits(10));
-        System.out.println(r.reverseBits(1));
+        System.out.println(r.reverseBits2(10));
+        System.out.println(r.reverseBits2(1));
         System.out.println(1 << 4);
     }
 
@@ -38,7 +38,25 @@ public class ReverseBits {
         return original ^ (calculatePowerOf2(position) - 1);
     }
 
+    int reverseBits2(int n){
+        int output = 0;
+
+        // 001010 --> 000101
+        while (n != 0){
+            output <<= 1;
+            if ((n & 1) == 1) {
+                output |= 1;
+            }
+            n >>= 1;
+        }
+
+        return output;
+    }
     int calculatePowerOf2(int n){
         return 1 << n;
     }
 }
+
+
+// 00 101
+// 00 010
