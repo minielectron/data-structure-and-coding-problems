@@ -5,7 +5,7 @@ class Classroom {
     private var root = Node()
 
     class Node {
-        val children: Array<Node?> = Array(26) { null }
+        val children: Array<Node?> = Array(26) { null } // considering only 12 lowercase alphabets
         var endOfWord: Boolean = false // End of word
     }
 
@@ -38,7 +38,13 @@ class Classroom {
         }
         return false
     }
-
+    /*
+    * Given an input string and a dictionary of words, find out if the input string can be broken into space-sperated
+    * sequence of dictionary words?
+    *
+    * ex words = [i, like, samsung, mobile, ice]
+    * key = "ilikesamsung" output = true
+    * */
     fun wordBreakProblem(key: String): Boolean {
         if (key.isEmpty()) return true
 
@@ -52,6 +58,10 @@ class Classroom {
         return false
     }
 
+    /*
+    * Given a string prefix, we have to find if there is any previously added string which starts with the
+    * given word prefix.
+    * */
     fun startsWith(prefix: String): Boolean {
         var curr = root
         for (i in prefix.indices) {
@@ -67,6 +77,12 @@ class Classroom {
         return false
     }
 
+    /*
+    * Given a string of length n of lowercase alphabets characters we need to count the total
+    * number of distinct substrings of the strings.
+    *
+    * ababa -> 10 [a., ab, aba, abab, ababa, b, ba, bab, baba, ""]
+    * */
     fun findUniqueSubstrings(str: String): Int {
         for (i in str.indices){
             insert(str.substring(i)) // Step 1: Find suffix and create trie of it

@@ -48,6 +48,18 @@ class Recursions {
         return  x * findXtoPowerN(x, n - 1)
     }
 
+    fun sumOfNNumbers(n: Int): Int {
+        if (n == 0) return 0
+        return n + sumOfNNumbers(n - 1) // This is actually a head recursion
+    }
+
+    fun sumOfNNumbersTail(n: Int, result: Int): Int {
+        if (n == 0) return result
+        // In tail recursion we process the value at each stack instead of waiting the function to return.
+        // And then compute --> This is more optimal for compilers
+        return sumOfNNumbersTail(n - 1, n + result) // This is actually a tail recursion
+    }
+
     fun towerOfHanoi(){
 
     }
@@ -56,11 +68,13 @@ class Recursions {
 
 fun main() {
     val recursions = Recursions()
-    recursions.printNum(10)
-    println(" \nSum = ${recursions.printSum(10)}")
-    println(" \nFactorial = ${recursions.factorial(30)}")
-    println(" \nEven number = ${recursions.evenSum(30)}") // 2 4 6 8 10 12 14 16 18 20
-    println(" \nFibonacci ")
-    recursions.fibonacci(0, 1, 30)
-    println(" \nX to N = ${recursions.findXtoPowerN(2, 0)}")
+//    recursions.printNum(10)
+//    println(" \nSum = ${recursions.printSum(10)}")
+//    println(" \nFactorial = ${recursions.factorial(30)}")
+//    println(" \nEven number = ${recursions.evenSum(30)}") // 2 4 6 8 10 12 14 16 18 20
+//    println(" \nFibonacci ")
+//    recursions.fibonacci(0, 1, 30)
+//    println(" \nX to N = ${recursions.findXtoPowerN(2, 0)}")
+    println(recursions.sumOfNNumbers(5))
+    println(recursions.sumOfNNumbersTail(5, 0))
 }

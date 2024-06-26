@@ -5,20 +5,15 @@ import java.util.PriorityQueue
 
 data class Edge(val source: Int, val destination: Int, val weight: Int)
 
-class Graphs(private val nodes: Int) {
+class Graph(private val V: Int, private val E: Int) {
 
-    private val graph = Array(nodes) { ArrayList<Edge>() } // Fixed array size to 'nodes'
+    private val graph = Array(V) { ArrayList<Edge>() } // Fixed array size to 'nodes'
 
-    fun createGraph() {
-        graph[0].add(Edge(0, 1, 2))
-        graph[0].add(Edge(0, 2, 4))
-        graph[1].add(Edge(1, 3, 7))
-        graph[1].add(Edge(1, 2, 1))
-        graph[2].add(Edge(2, 4, 3))
-        graph[3].add(Edge(3, 5, 1))
-        graph[4].add(Edge(4, 3, 2))
-        graph[4].add(Edge(4, 5, 5))
-        graph[5].add(Edge(3, 4, 1))
+    fun createGraph(edges: ArrayList<Edge>) {
+        if (edges.size != E) throw IllegalArgumentException("Number of edges is not equal to E")
+        edges.forEachIndexed { index, edge ->
+            graph[edge.source].add(edge)
+        }
     }
 
     fun bfs() {
@@ -27,7 +22,7 @@ class Graphs(private val nodes: Int) {
         }
 
         val queue = LinkedList<Int>()
-        val visited = BooleanArray(nodes)
+        val visited = BooleanArray(V)
 
         // Initialize the queue with the first vertex (you can choose any starting vertex)
         queue.add(graph[0].first().source) // Starting vertex with source and destination as 0
@@ -148,7 +143,7 @@ class Graphs(private val nodes: Int) {
         val visited = BooleanArray(graph.size) { false }
         // Here we are tricking which will work in case starting node is zero but won't work for others.
         pq.add(VertexPair(src, 0))
-        val distance = IntArray(graph.size){0}
+        val distance = IntArray(graph.size) { 0 }
 
         // Do not src nodes to max as it will be always 0
         for (i in distance.indices) {
@@ -180,45 +175,73 @@ class Graphs(private val nodes: Int) {
         }
     }
 
-    fun bellmanfordAlgo(src: Int) {
+    /*
+    * It works even for the negative weighted graphs where dijkastra failes.
+    * BFA  doesn't work for negative weight cycle
+    * */
+    fun bellmanFordAlgo(src: Int) {
         val V = graph.size
-        val dist = IntArray(V)
-        for (i in graph.indices) {
-            if (src != i) {
-                dist[i] = Int.MAX_VALUE
-            }
-        }
+        val dist = IntArray(V) { if (it == src) 0 else Int.MAX_VALUE }
 
+        // Step 2: Relax all edges |V| - 1 times
         for (k in 0 until V - 1) {
             for (i in 0 until V) {
-                for (j in graph[i].indices) {
-                    val edge = graph[i][j]
+                for (edge in graph[i]) {
                     val u = edge.source
                     val v = edge.destination
-                    if (dist[u] != Int.MAX_VALUE && dist[u] + edge.weight < dist[v]) {
-                        dist[v] = dist[u] + edge.weight
+                    val weight = edge.weight
+                    if (dist[u] != Int.MAX_VALUE && dist[u] + weight < dist[v]) {
+                        dist[v] = dist[u] + weight
                     }
                 }
             }
         }
 
-        for (d in dist) {
-            print("$d ->")
+        // Step 3: Check for negative-weight cycles
+        for (i in 0 until V) {
+            for (edge in graph[i]) {
+                val u = edge.source
+                val v = edge.destination
+                val weight = edge.weight
+                if (dist[u] != Int.MAX_VALUE && dist[u] + weight < dist[v]) {
+                    println("Graph contains negative weight cycle")
+                    return
+                }
+            }
         }
 
+        // Print distances
+        println("\nBellman Ford: Vertex distances from source $src:")
+        for (i in 0 until V) {
+            println("Vertex $i: ${if (dist[i] == Int.MAX_VALUE) "Infinity" else dist[i]}")
+        }
     }
 
 
-    fun primsMst(src: Int) {
+    /*
+    * MST - Minimum spanning tree
+    * A subtree in which all the vertices are connected
+    * There are no cycle in MST
+    * Total edge weight in minimum
+    * Works on connected graphs
+    * O(E(log(E))
+    * */
+    fun primsMst(src: Int) : Int {
+
+        // This works as non mst set and always gives node with minimum distance sorting
         val pq = PriorityQueue<VertexPair>()
-        pq.add(VertexPair(0, 0)) // Non mst
+        pq.add(VertexPair(0, 0))
+
+        // this works as mst set
         val visited = BooleanArray(graph.size) { false }
         var cost = 0
+
+        // For every node we get the minimum distance and add to cost
         while (pq.isNotEmpty()) {
             val curr = pq.poll()
             if (!visited[curr.node]) {
                 visited[curr.node] = true
-                cost += curr.distance
+                cost += curr.cost
 
                 for (i in graph[curr.node].indices) {
                     val edge = graph[curr.node][i]
@@ -229,7 +252,7 @@ class Graphs(private val nodes: Int) {
             }
         }
 
-        println("\nTotal path cost = $cost")
+        return cost
     }
 
     fun topSort(): LinkedList<Int> {
@@ -311,21 +334,33 @@ class Graphs(private val nodes: Int) {
     }
 }
 
-class VertexPair(val node: Int, val distance: Int) : Comparable<VertexPair> {
+class VertexPair(val node: Int, val cost: Int) : Comparable<VertexPair> {
     override fun compareTo(other: VertexPair): Int {
-        return distance - other.distance
+        return cost - other.cost
     }
 
     override fun toString(): String {
-        return "[$node, $distance]"
+        return "[$node, $cost]"
     }
 }
 
 fun main() {
 
-    val graph = Graphs(6)
-    graph.createGraph()
+    val graph = Graph(6, 9)
+    val defaultEdgesGraph = arrayListOf(
+        Edge(0, 1, 2),
+        Edge(0, 2, 4),
+        Edge(1, 3, 7),
+        Edge(1, 2, 1),
+        Edge(2, 4, 3),
+        Edge(3, 5, 1),
+        Edge(4, 3, 2),
+        Edge(4, 5, 5),
+        Edge(3, 4, 1)
+    )
+    graph.createGraph(defaultEdgesGraph)
     graph.dijkstraAlgorithm(0)
+    graph.bellmanFordAlgo(0)
 //    graph.bfs()
 //    val visited = BooleanArray(graph.size()) { false }
 //    visited.forEachIndexed { index, value ->

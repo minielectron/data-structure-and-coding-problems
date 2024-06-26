@@ -240,6 +240,63 @@ public class BinarySearchTree implements BST {
 
     }
 
+    boolean dfs(Node node, int value) {
+        if (node == null) return false;
+        if (node.data == value) return true;
+        return dfs(node.left, value) || dfs(node.right, value);
+    }
+
+    /*
+     * Given the root of tree, determine the longest path that exists between any two nodes in the tree.
+     * */
+    public int diameterOfBinaryTree(Node root) {
+        RecursiveAnswer finalAnswer = subtreeMaxDiameter(root);
+
+        return finalAnswer.bestDiameterSeenSoFar;
+    }
+
+    /*
+     * The "diameter" of a given subtree is the longest path between "any two nodes
+     * in the tree". If we want a maximal diameter, we want to know the deepest
+     * depth of the left & right subtree of a node (this maximizes the path) and we
+     * then add 1 to account for the subtree root.
+     */
+    private RecursiveAnswer subtreeMaxDiameter(Node root) {
+        if (root == null) {
+            return new RecursiveAnswer(0, 0);
+        }
+
+        RecursiveAnswer left = subtreeMaxDiameter(root.left);
+        RecursiveAnswer right = subtreeMaxDiameter(root.right);
+
+        int leftAndRightMax = Math.max(left.bestDiameterSeenSoFar, right.bestDiameterSeenSoFar);
+        int bestDiameterSeenSoFar = Math.max(leftAndRightMax, left.subtreeHeight + right.subtreeHeight);
+
+        // +1 to include the root itself along with the deeper subtree height
+        int subtreeHeight = Math.max(left.subtreeHeight, right.subtreeHeight) + 1;
+
+        return new RecursiveAnswer(bestDiameterSeenSoFar, subtreeHeight);
+    }
+
+    public int height(Node node) {
+        if (node == null) return 0;
+
+        int left = height(node.left);
+        int right = height(node.right);
+
+        return Math.max(left, right) + 1;
+    }
+
+    private class RecursiveAnswer {
+        int bestDiameterSeenSoFar;
+        int subtreeHeight;
+
+        public RecursiveAnswer(int bestDiameterSeenSoFar, int subtreeHeight) {
+            this.bestDiameterSeenSoFar = bestDiameterSeenSoFar;
+            this.subtreeHeight = subtreeHeight;
+        }
+    }
+
     static class AugmentedNode {
 
         Node node = null;
@@ -269,7 +326,13 @@ public class BinarySearchTree implements BST {
 //        print(tree.isBinarySearchTree(tree.root));
 
         Node node = tree.createBalancedBSTTreeFromSortedArray(new int[]{1, 2, 3, 4, 5, 6, 7, 8});
-        tree.printPreorder(node);
+//        tree.printPreorder(node);
+//        print(tree.diameterOfBinaryTree(node));
+        print(tree.height(node));
+        print(tree.dfs(node, 5));
+        print(tree.dfs(node, 20));
+        print(tree.dfs(node, 1));
+        print(tree.dfs(node, 8));
     }
 
     static void print(Object o) {
