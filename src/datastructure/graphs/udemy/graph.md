@@ -35,4 +35,18 @@ backward edge -- > edge u points to its v ancestor
 
 T(n) = O(E + V)
 
+# shortest path application
+- Navigation
+- Routing information protocol
+- Avidan shamir method - image processing
+# CPM - critical point method
+ - Longest path problem
+   - Np-hard problem with no known polynomial running time algorithm to solve
+   - but if the G(V,E) graph is DAG, then we can solve in linear running time.
+   - Scheduling algorithms rely heavily on longest paths
+   - is it possible to transform the logest path problem into a shortest path problem?
+   - We have to just negate the edge weights - multply then by -1 and run the standard short parth algorithms
+   - because of negative weight we have to use Bellman ford
+   - It can solve the parallel job scheduling problem
+
 

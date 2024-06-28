@@ -14,18 +14,18 @@ public class App {
         Vertex v4 = new Vertex("D");
         Vertex v5 = new Vertex("E");
 
-        v0.addEdge(new Edge(v1, 1));
-        v0.addEdge(new Edge(v3, 2));
+        v0.addEdge(new Edge(v1, -1));
+        v0.addEdge(new Edge(v3, -2));
 
-        v1.addEdge(new Edge(v2, 6));
+        v1.addEdge(new Edge(v2, -6));
 
-        v2.addEdge(new Edge(v4, 1));
-        v2.addEdge(new Edge(v5, 4));
+        v2.addEdge(new Edge(v4, -1));
+        v2.addEdge(new Edge(v5, -4));
 
-        v3.addEdge(new Edge(v1, 4));
-        v3.addEdge(new Edge(v4, 3));
+        v3.addEdge(new Edge(v1, -4));
+        v3.addEdge(new Edge(v4, -3));
 
-        v3.addEdge(new Edge(v5, 1));
+        v3.addEdge(new Edge(v5, -1));
 
         graph.add(v0);
         graph.add(v1);
