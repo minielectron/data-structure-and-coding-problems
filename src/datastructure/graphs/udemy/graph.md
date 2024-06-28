@@ -50,3 +50,15 @@ T(n) = O(E + V)
    - It can solve the parallel job scheduling problem
 
 
+
+# Greedy algorithms
+
+- Constructs the final solution by choosing the best option possible in every iteration.
+- It combines locally optimal solutions to get the global solution.
+
+# Dynamic problem
+
+- Avoid recalculating the same problems over and over again.
+- It uses extra memory (memoization or tabulation) to store the sub-results.
+- optimal substructure - If an optimal solution
+- overlapping sub problems
