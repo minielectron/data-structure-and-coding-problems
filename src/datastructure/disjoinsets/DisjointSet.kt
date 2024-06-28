@@ -60,22 +60,14 @@ fun main() {
     println(disjointSet.toString())
     disjointSet.union(0, 1)
     println(disjointSet.toString())
-    disjointSet.union(1,2)
+    disjointSet.union(1, 2)
     println(disjointSet.toString())
-    disjointSet.union(4,6)
+    disjointSet.union(4, 6)
     println(disjointSet.toString())
-    disjointSet.union(6,8)
+    disjointSet.union(6, 8)
     println(disjointSet.toString())
-    disjointSet.union(6,0)
+    disjointSet.union(6, 0)
     println(disjointSet.toString())
     println(disjointSet.find(8))
-    println(disjointSet.isConnected(0,1))
-
-    /*
-    * parent = 0,1,2,3,4,5,6,7,8,9 and size = 1,1,1,1,1,1,1,1,1,1
-parent = 0,0,2,3,4,5,6,7,8,9 and size = 2,1,1,1,1,1,1,1,1,1
-parent = 0,0,0,3,4,5,6,7,8,9 and size = 3,1,1,1,1,1,1,1,1,1
-parent = 0,0,0,3,4,5,4,7,8,9 and size = 3,1,1,1,2,1,1,1,1,1
-parent = 0,0,0,3,4,5,4,7,4,9 and size = 3,1,1,1,3,1,1,1,1,1
-parent = 4,0,0,3,4,5,4,7,4,9 and size = 3,1,1,1,6,1,1,1,1,1*/
+    println(disjointSet.isConnected(0, 1))
 }

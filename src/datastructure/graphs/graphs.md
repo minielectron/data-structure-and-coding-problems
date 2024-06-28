@@ -37,4 +37,14 @@ Algorithms
 ## Adjacency List 
  - List of list
 
+# Shortest path
+- Dijkastra -
+  - fastest for unbounded non-negative weight O(VLogV + E) , 
+  - greedy approach
+  - On every iteration we want to find the minimum distance to the next vertex possible.
+  - Priority queue is used internally which is heap based
+- Bellman ford
+- A * Search
+- Floyd warshall algorithm
+
  

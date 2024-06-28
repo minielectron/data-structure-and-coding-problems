@@ -1,7 +1,7 @@
 package datastructure.graphs
 
-import java.util.LinkedList
-import java.util.PriorityQueue
+import java.util.*
+import kotlin.collections.ArrayList
 
 data class Edge(val source: Int, val destination: Int, val weight: Int)
 
@@ -46,6 +46,10 @@ class Graph(private val V: Int, private val E: Int) {
         }
     }
 
+    /*
+    * Depth first search
+    * O(V+E)
+    * */
     fun dfs(inputGraph: Array<ArrayList<Edge>>, curr: Int, visited: BooleanArray) { // O(V+E)
 
         // Step - 1 - Print the node
@@ -226,15 +230,18 @@ class Graph(private val V: Int, private val E: Int) {
     * Works on connected graphs
     * O(E(log(E))
     * */
-    fun primsMst(src: Int) : Int {
+    fun primsMst(src: Int) : Pair<Int, List<Pair<Int, Int>>> {
 
         // This works as non mst set and always gives node with minimum distance sorting
         val pq = PriorityQueue<VertexPair>()
-        pq.add(VertexPair(0, 0))
+        pq.add(VertexPair(src, 0))
 
         // this works as mst set
         val visited = BooleanArray(graph.size) { false }
         var cost = 0
+
+        val parent = IntArray(graph.size) { -1 } // To store the parent of each node
+        val edges = mutableListOf<Pair<Int, Int>>() // To store the MST edges
 
         // For every node we get the minimum distance and add to cost
         while (pq.isNotEmpty()) {
@@ -243,18 +250,32 @@ class Graph(private val V: Int, private val E: Int) {
                 visited[curr.node] = true
                 cost += curr.cost
 
+                // This is print actual edges being added
+                if (parent[curr.node] != -1){
+                    edges.add(Pair(parent[curr.node], curr.node))
+                }
+
                 for (i in graph[curr.node].indices) {
                     val edge = graph[curr.node][i]
                     if (!visited[edge.destination]) {
                         pq.add(VertexPair(edge.destination, edge.weight))
+                        parent[edge.destination] = curr.node
                     }
                 }
             }
         }
 
-        return cost
+        return Pair(cost, edges.toList())
     }
 
+
+    /*
+    * This is used to perform linear sort of graph.
+    * Works only on DAG(Directed acyclic graph)
+    * It tells about the dependency a cannot be done before b, if a comes before b in the graph
+    * Modified version of DFS to track the dependency
+    * T = O(E+V)
+    * */
     fun topSort(): LinkedList<Int> {
         val visited = BooleanArray(6) { false }
         val stack = LinkedList<Int>()
@@ -276,7 +297,7 @@ class Graph(private val V: Int, private val E: Int) {
                 topologicalSort(n, visited, stack)
             }
         }
-        stack.push(curr) // DFS + push to stack
+        stack.push(curr) // DFS + push to stack(Only difference from dfs)
     }
 
     /**
@@ -288,6 +309,7 @@ class Graph(private val V: Int, private val E: Int) {
      * 1. Get nodes in stack(Topological sort)
      * 2. Transpose the graph
      * 3. Do DFS according to stack nodes on the transpose graph.
+     * T = O(V+E)
      * */
     fun kosarajuAlgorithm() {
         val visited = BooleanArray(graph.size) { false }
@@ -359,9 +381,13 @@ fun main() {
         Edge(3, 4, 1)
     )
     graph.createGraph(defaultEdgesGraph)
-    graph.dijkstraAlgorithm(0)
-    graph.bellmanFordAlgo(0)
-//    graph.bfs()
+//    graph.dijkstraAlgorithm(0)
+//    graph.bellmanFordAlgo(0)
+//    println(graph.primsMst(0).first)
+//    println(graph.primsMst(0).second)
+//    graph.topSort().forEach { println(it) }
+    graph.kosarajuAlgorithm()
+    graph.bfs()
 //    val visited = BooleanArray(graph.size()) { false }
 //    visited.forEachIndexed { index, value ->
 //        if (!value) {
