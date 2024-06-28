@@ -14,7 +14,7 @@ public class App {
         Vertex v4 = new Vertex("D");
         Vertex v5 = new Vertex("E");
 
-        v0.addEdge(new Edge(v1, -1));
+        v0.addEdge(new Edge(v1, -1)); // negated for cmp implementation
         v0.addEdge(new Edge(v3, -2));
 
         v1.addEdge(new Edge(v2, -6));
