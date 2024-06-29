@@ -1,4 +1,4 @@
-package top150.primitives;
+package top150;
 
 /**
  * Given a non-negative integer input, return true if input is a power of two. Return false otherwise.

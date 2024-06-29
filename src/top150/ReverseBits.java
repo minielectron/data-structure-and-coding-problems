@@ -1,4 +1,4 @@
-package top150.primitives;
+package top150;
 
 /**
  * Given an input integer input, return the integer value of input's bits reversed.

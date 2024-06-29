@@ -1,4 +1,4 @@
-package top150.primitives;
+package top150;
 
 /**
  *
