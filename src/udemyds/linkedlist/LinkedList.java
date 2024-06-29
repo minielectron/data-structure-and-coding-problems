@@ -30,6 +30,32 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         }
     }
 
+    public Node<T> getMiddleNode(){
+        Node<T> slow = head;
+        Node<T> fast = head;
+
+        while (fast.getNextNode() != null && fast.getNextNode().getNextNode() != null){
+            slow = slow.getNextNode();
+            fast = fast.getNextNode().getNextNode();
+        }
+
+        return slow;
+    }
+
+    public void reverseList(){
+        Node<T> prev = null;
+        Node<T> next = null;
+        Node<T> current = head;
+
+        while (current != null){
+            next = current.getNextNode();
+            current.setNext(prev);
+            prev = current;
+            current = next;
+        }
+        this.head = prev;
+    }
+
     @Override
     public void remove(T data) {
         if (head == null) return;
