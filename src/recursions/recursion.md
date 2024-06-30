@@ -12,3 +12,9 @@ Steps
 1. Choose a pivot item at random
 2. Partition the array 
 3. instead of recursion on both side we take one side
+
+# Backtracking
+- Backtracking is form of recursion
+- general algorithm for finding all the solutions to some computation problems
+- these are constraint satisfaction problems
+- its faster than brute force approach, we can discard bad states

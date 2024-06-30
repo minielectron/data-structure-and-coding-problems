@@ -14,6 +14,10 @@ public class CountBits {
 //        System.out.println(bits.checkEven(1011012));
         System.out.println(bits.russianPeasantProblem(2, 4));
         System.out.println(bits.russianPeasantProblem(2, 5));
+        System.out.println(bits.russianPeasantProblem(5, 2));
+        System.out.println(bits.russianPeasantProblemWithRecursion(5, 2));
+        System.out.println(bits.russianPeasantProblemWithRecursion(10, 5));
+
     }
 
     public boolean checkEven(int n) {
@@ -49,5 +53,15 @@ public class CountBits {
             b = b >> 1;
         }
         return result;
+    }
+
+    public int russianPeasantProblemWithRecursion(int a, int b) {
+        // a x b = 2a x b/2 works for even, because in odd its integer division
+
+        if (b == 1) return a;
+        if ((b ^ 1) == b - 1) {
+            return a + russianPeasantProblemWithRecursion(a << 1, b >> 1);
+        } else return russianPeasantProblemWithRecursion(a << 1, b >> 1);
+
     }
 }
