@@ -19,3 +19,9 @@
 - Application in windows
   - Photoviewer doubly linked list-
 - Blockchains
+
+# Stack application [LIFO]
+- Browser navigation
+- Stack manager in programs memory
+- undo redo application
+
