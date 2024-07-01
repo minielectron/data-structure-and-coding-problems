@@ -25,3 +25,9 @@
 - Stack manager in programs memory
 - undo redo application
 
+# Binary search tree
+- Every node in the tree can have at most 2 children
+- left child is smaller than the parent
+- right child is always greater than the parent
+
+
