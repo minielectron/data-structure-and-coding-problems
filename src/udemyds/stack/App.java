@@ -15,18 +15,28 @@ public class App {
 //        }
 
         MinAndMaxStack stack = new MinAndMaxStack();
-        System.out.println(stack.getMax());
-        System.out.println(stack.getMin());
-        stack.push(10);
-        stack.push(1);
-        stack.push(12);
-        stack.push(15);
-        stack.push(6);
-        System.out.println(stack.getMax());
-        System.out.println(stack.getMin());
-        stack.pop();
-        stack.pop();
-        System.out.println(stack.getMax());
-        System.out.println(stack.getMin());
+//        System.out.println(stack.getMax());
+//        System.out.println(stack.getMin());
+//        stack.push(10);
+//        stack.push(1);
+//        stack.push(12);
+//        stack.push(15);
+//        stack.push(6);
+//        System.out.println(stack.getMax());
+//        System.out.println(stack.getMin());
+//        stack.pop();
+//        stack.pop();
+//        System.out.println(stack.getMax());
+//        System.out.println(stack.getMin());
+
+        QueueWithStack queueWithStack = new QueueWithStack();
+        queueWithStack.enqueue(10);
+        queueWithStack.enqueue(20);
+        queueWithStack.enqueue(30);
+        queueWithStack.enqueue(40);
+        queueWithStack.enqueue(50);
+        System.out.println(queueWithStack.dequeue());
+        System.out.println(queueWithStack.dequeue());
+        System.out.println(queueWithStack.dequeue());
     }
 }
