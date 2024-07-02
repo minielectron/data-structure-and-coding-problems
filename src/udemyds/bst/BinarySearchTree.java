@@ -32,6 +32,27 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
         }
     }
 
+    public Node<T> kthSmallest(Node<T>  node, int k){
+
+        // number of node in left subtree.
+        // +1 because of root node addition to subtree
+        int n = treeSize(node.getLeftChild()) + 1 ;
+
+        // when we find kth smallest item
+        if (n == k) return node;
+
+        if (n > k) return kthSmallest(node.getLeftChild(), k);
+
+        return kthSmallest(node.getRightChild(), k - n);
+
+    }
+
+    private int treeSize (Node<T> node){
+        if (node == null) return 0;
+
+        return treeSize(node.getLeftChild()) + treeSize(node.getRightChild()) + 1;
+    }
+
     @Override
     public void remove(T data) {
 
@@ -177,5 +198,9 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
             return getMax(node.getLeftChild());
         }
         return node.getData();
+    }
+
+    public Node<T> getRoot() {
+        return root;
     }
 }
