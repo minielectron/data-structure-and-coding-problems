@@ -203,4 +203,16 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
     public Node<T> getRoot() {
         return root;
     }
+
+    public int sum(Node<Integer> node){
+
+        if (node == null) return 0;
+
+        int left = sum(node.getLeftChild()) ;
+        int right = sum(node.getRightChild()) ;
+//        System.out.println("Considering node left ->" + left);
+//        System.out.println("Considering node right ->" + right);
+//        System.out.println("Considering node total sum ->" + (left + right + node.getData()));
+        return left + right + node.getData();
+    }
 }
