@@ -30,4 +30,13 @@
 - left child is smaller than the parent
 - right child is always greater than the parent
 
+# Disjoint sets
+- Disjoint set data structure is used in krusskal algorithm implementation
+- we have to check whether adding a given edge to the mst would form a cycle or not
+- union-find ds is extremely hlepful because of the union() and find() functions
+- we can check whether a cycle is present in a G(V,E) graph in 0(1) constant running time complexity.[path compression]
+
+
+
+
 

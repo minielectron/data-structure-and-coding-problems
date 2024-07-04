@@ -1,5 +1,7 @@
 package udemyds.linkedlist;
 
+import java.util.Stack;
+
 public class LinkedList<T extends Comparable<T>> implements List<T> {
 
     private Node<T> head;
@@ -43,6 +45,8 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
     }
 
     public void reverseList(){
+
+        Stack<Node> nodes = new Stack<>();
         Node<T> prev = null;
         Node<T> next = null;
         Node<T> current = head;
