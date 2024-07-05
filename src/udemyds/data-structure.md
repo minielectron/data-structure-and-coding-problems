@@ -36,6 +36,14 @@
 - union-find ds is extremely hlepful because of the union() and find() functions
 - we can check whether a cycle is present in a G(V,E) graph in 0(1) constant running time complexity.[path compression]
 
+# AVL trees
+- The height of two child subtrees of any node differ by at most one.
+- AVL are faster than red black trees because they are more rigidly balanced but needs more work.
+- operating system relies heavily on these data structures.
+- AVL is faster but red black is easier to construct.
+- Height diff between left and right should not be more than 1.
+- balance factor -> | height-left - height-right | > 1 --> Imbalanced
+
 
 
 
