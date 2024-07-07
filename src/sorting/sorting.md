@@ -43,3 +43,9 @@
 - It is faster for small arrays and that why it is being used in many other sorting algorithms such as quick sort.
 - It is an online algorithm - It can sort an array as it receives the require shifting large sections of the sorted portion ot the array.
 - It writes O(N^2), and selection sort only O(N)
+
+# Shell sort
+- Variant of insertion sort
+- inplace
+- adaptive
+- uses insertion sort sub-procedure
