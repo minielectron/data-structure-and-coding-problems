@@ -44,6 +44,18 @@
 - Height diff between left and right should not be more than 1.
 - balance factor -> | height-left - height-right | > 1 --> Imbalanced
 
+# Red black trees
+- Time complexity O(logN) in all cases
+- Properties
+  - Each node is red or black
+  - Root node is always black
+  - all lead nodes(NULL pointers) are black
+  - Every red node has two black children and no other children and it must have black parent.
+  - Every path from a given node to any of its descendants null nodes contains the same number of black nodes.
+- Rotations when properties are violated -> O(1)
+  - Left --for right heavy
+  - Right -- For left heavy
+
 
 
 
