@@ -10,7 +10,7 @@ public class App {
         bst.insert(20);
         bst.insert(1);
         bst.insert(8);
-//        bst.traversal();
+        bst.traversal();
 
 //        BinarySearchTree<Integer> bst2 = new BinarySearchTree<>();
 //        bst.insert(10);
@@ -30,7 +30,7 @@ public class App {
 //        boolean isSame = comparator.isSameTree(bst.getRoot(), bst2.getRoot());
 //        System.out.println(isSame);
 
-        System.out.println(bst.sum(bst.getRoot()));
+//        System.out.println(bst.sum(bst.getRoot()));
     }
 
 }

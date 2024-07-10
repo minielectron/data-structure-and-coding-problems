@@ -32,11 +32,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
         }
     }
 
-    public Node<T> kthSmallest(Node<T>  node, int k){
+    public Node<T> kthSmallest(Node<T> node, int k) {
 
         // number of node in left subtree.
         // +1 because of root node addition to subtree
-        int n = treeSize(node.getLeftChild()) + 1 ;
+        int n = treeSize(node.getLeftChild()) + 1;
 
         // when we find kth smallest item
         if (n == k) return node;
@@ -47,7 +47,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
     }
 
-    private int treeSize (Node<T> node){
+    private int treeSize(Node<T> node) {
         if (node == null) return 0;
 
         return treeSize(node.getLeftChild()) + treeSize(node.getRightChild()) + 1;
@@ -65,26 +65,26 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
     private void remove(T data, Node<T> node) {
         if (node == null) return;
 
-        if (data.compareTo(node.getData()) < 0){
+        if (data.compareTo(node.getData()) < 0) {
             remove(data, node.getLeftChild());
-        } else if (data.compareTo(node.getData()) > 0){
+        } else if (data.compareTo(node.getData()) > 0) {
             remove(data, node.getRightChild());
-        }else {
+        } else {
             // We have a match, three cases are possible here
             // 1. leaf node
 
-            if (node.getLeftChild() == null && node.getRightChild() == null){
+            if (node.getLeftChild() == null && node.getRightChild() == null) {
                 Node<T> parent = node.getParentNode();
 
-                if (parent != null && parent.getLeftChild() == node){
+                if (parent != null && parent.getLeftChild() == node) {
                     parent.setLeftChild(null);
                 }
 
-                if (parent != null && parent.getRightChild() == node){
+                if (parent != null && parent.getRightChild() == node) {
                     parent.setRightChild(null);
                 }
 
-                if (parent == null){
+                if (parent == null) {
                     root = null;
                 }
 
@@ -93,37 +93,35 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
             // 2. node with one child
 
-            else if (node.getLeftChild() == null &&  node.getRightChild() != null) {
+            else if (node.getLeftChild() == null && node.getRightChild() != null) {
                 // node has left child but not right child
 
                 Node<T> parent = node.getParentNode();
 
-                if (parent != null && parent.getLeftChild() == node){
+                if (parent != null && parent.getLeftChild() == node) {
                     parent.setLeftChild(node.getRightChild());
-                }else if (parent != null && parent.getRightChild() == node){
+                } else if (parent != null && parent.getRightChild() == node) {
                     parent.setRightChild(node.getRightChild());
                 }
 
-                if (parent == null){
+                if (parent == null) {
                     root = node.getRightChild();
                 }
 
                 node.getRightChild().setParentChild(node);
                 node = null;
-            }
-
-            else if (node.getLeftChild() != null &&  node.getRightChild() == null) {
+            } else if (node.getLeftChild() != null && node.getRightChild() == null) {
                 // node has left child but not right child
 
                 Node<T> parent = node.getParentNode();
 
-                if (parent != null && parent.getLeftChild() == node){
+                if (parent != null && parent.getLeftChild() == node) {
                     parent.setLeftChild(node.getLeftChild());
-                }else if (parent != null && parent.getRightChild() == node){
+                } else if (parent != null && parent.getRightChild() == node) {
                     parent.setRightChild(node.getLeftChild());
                 }
 
-                if (parent == null){
+                if (parent == null) {
                     root = node.getLeftChild();
                 }
 
@@ -147,7 +145,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
     private Node<T> findPredecessor(Node<T> node) {
 
-        if (node.getRightChild() != null){
+        if (node.getRightChild() != null) {
             return findPredecessor(node.getRightChild());
         }
         return node;
@@ -156,8 +154,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
     @Override
     public void traversal() {
         if (root == null) return;
-        if (root.getLeftChild() != null)
-            inorder(root);
+        inorder(root);
     }
 
     public void inorder(Node<T> node) {
@@ -204,12 +201,12 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
         return root;
     }
 
-    public int sum(Node<Integer> node){
+    public int sum(Node<Integer> node) {
 
         if (node == null) return 0;
 
-        int left = sum(node.getLeftChild()) ;
-        int right = sum(node.getRightChild()) ;
+        int left = sum(node.getLeftChild());
+        int right = sum(node.getRightChild());
         System.out.println("Considering node left ->" + left);
         System.out.println("Considering node right ->" + right);
         System.out.println("Considering node total sum ->" + (left + right + node.getData()));
