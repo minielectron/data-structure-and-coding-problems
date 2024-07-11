@@ -251,6 +251,111 @@ public class Solution {
         return output.length();
     }
 
+    public int maxProfit(int[] prices) {
+        // [1,2,3,4,5]
+        // [7,1,5,3,6,4]
+
+        int min = prices[0]; // 1
+        int max = 0;
+        int sum = 0;
+
+        for(int i = 1 ; i < prices.length -1; i++){
+            if(min <= prices[i]){
+                min = prices[i];
+            }else {
+                max = Math.max(max, prices[i]);
+                if (prices[i] < max){
+                    sum += max - min;
+                    min = prices[i];
+                    max = 0;
+                }
+            }
+        }
+
+        return sum;
+    }
+
+//    public void rotate(int[] nums, int k) {
+//        // Rotate the array right by k steps
+//        for(int i = 0 ; i < k; i++){
+//            int last = nums[nums.length - 1];
+//            for (int j = nums.length - 1; j > 0; j--) {
+//                nums[j] = nums[j - 1];
+//            }
+//            nums[0] = last;
+//        }
+//
+//    }
+
+    public void rotate(int[] nums, int k) {
+        int n = nums.length;
+        k = k % n;  // Handle cases where k is greater than the array length
+
+        // Reverse the entire array
+        reverse(nums, 0, n - 1);
+        // Reverse the first k elements
+        reverse(nums, 0, k - 1);
+        // Reverse the remaining n - k elements
+        reverse(nums, k, n - 1);
+    }
+
+    private void reverse(int[] nums, int start, int end) {
+        while (start < end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
+    public int singleNumber(int[] nums) {
+        int num = 0;
+
+        for(int i = 0 ; i < nums.length; i++){
+            num = num ^ nums[i];
+        }
+
+        return num;
+    }
+
+    public int[] plusOne(int[] digits) {
+        int lastIndex = digits.length - 1;
+        int carry = (digits[lastIndex] + 1) / 10;
+
+        if (carry != 1){
+            digits [digits.length - 1] = digits [digits.length - 1] + 1;
+            return digits;
+        }else{
+            // [9,9,9,9] -> [2, 0, 0, 0]
+            int lastIndexOf9 = lastIndex;
+            while (lastIndexOf9 > 0){
+                if (digits[lastIndexOf9] == 9){
+                    lastIndexOf9 --;
+                }else {
+                    break;
+                }
+            }
+
+            if (lastIndexOf9 == 0 && digits[lastIndexOf9] == 9){
+                // When all the digits are 9
+                int [] result = new int[digits.length + 1];
+                result[0] = 1;
+                for (int i = 1 ; i < result.length ; i++){
+                    // fill the array with zeros
+                    result[i] = 0;
+                }
+                return result;
+            }else{
+                digits[lastIndexOf9] = digits[lastIndexOf9] + 1;
+                for (int i = lastIndexOf9 + 1; i < digits.length ; i++){
+                    digits[i] = 0;
+                }
+                return digits;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Solution solution = new Solution();
 //        System.out.println(solution.mergeAlternately("abcd", "pq"));
@@ -259,8 +364,20 @@ public class Solution {
 //        System.out.println(solution.reverseWords("The sky  is blue"));
 //        System.out.println(solution.increasingTriplet(new int[]{20, 100, 10, 12, 5, 13}));
 //        System.out.println(solution.isSubsequence("axc", "ahbgdc"));
-        char[] input = new char[]{'a','a','b','b','c','c','c'};
-        System.out.println(solution.compress(input));
-        System.out.println(input);
+//        char[] input = new char[]{'a','a','b','b','c','c','c'};
+//        System.out.println(solution.compress(input));
+//        System.out.println(input);
+//        System.out.println(solution.maxProfit(new int[]{1,2,3,4,5}));
+        int [] input = new int[]{9};
+//        solution.rotate(input, 4);
+//        System.out.println(solution.singleNumber(input));
+//        for (int n: input){
+//            System.out.print(n + " ");
+//        }
+
+        int[] result = solution.plusOne(input);
+        for (int i: result){
+            System.out.print(i + " ");
+        }
     }
 }

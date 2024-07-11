@@ -57,6 +57,29 @@
   - Right -- For left heavy
 
 
+# Heap data structure
+- Designed based on priority
+  - Max heap - root is max
+  - Min heap - root is min
+- We can do sorting with heaps
+- Roots[max, min] can be retrieved in O(1)
+- heaps are basically binary trees
+- it is complete so it cannot be unbalanced
+- Applications: Dijkastra's algorithm, Prims algorithm
+- Properties
+  - Completeness - we construct it from left to right - last row may not be fully complete
+  - Every node can have 2 children so heaps are almost complete binary trees
+  - Remove -> root(O(logN)) --> other -> (O(N) linear search + O(logN) remove) -> O(N)
+  - Best for root items operations
+  - heapsort -> O(NlogN) 
+    - in place
+    - not stable
+    - we take the root node and swap it with last item
+    - do heapify starting with root node because the heap properties mau be violated
+    - we do it N times
+    - quicksort + heapsort = introsort
+
+
 
 
 
