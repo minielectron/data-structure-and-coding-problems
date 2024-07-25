@@ -356,6 +356,34 @@ public class Solution {
         }
     }
 
+    public boolean isValid(String s) {
+
+        if (s.length() < 2) return false;
+
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(' || c == '{' || c == '['){
+                stack.push(c);
+            }else {
+                if (stack.isEmpty()) return false;
+                char cp = stack.pop();
+                if (cp == '(') {
+                    if ( c != ')') return false;
+                }
+                if (cp == '['){
+                    if ( c != ']') return false;
+                }
+                if (cp == '{') {
+                    if ( c != '}') return false;
+                }
+            }
+        }
+
+        return stack.isEmpty();
+    }
+
     public static void main(String[] args) {
         Solution solution = new Solution();
 //        System.out.println(solution.mergeAlternately("abcd", "pq"));
@@ -379,5 +407,13 @@ public class Solution {
         for (int i: result){
             System.out.print(i + " ");
         }
+
+        System.out.println(solution.isValid("{}"));
+        System.out.println(solution.isValid("{]"));
+        System.out.println(solution.isValid("{}[]"));
+        System.out.println(solution.isValid("({}[])"));
+        System.out.println(solution.isValid("(("));
+        System.out.println(solution.isValid("((]))"));
+
     }
 }
