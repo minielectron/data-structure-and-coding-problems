@@ -36,10 +36,10 @@ public class App {
 
         h.addNeighbour(g);
 
-//        bfs.traverse(a);
+        bfs.traverse(a);
 
         WebCrawlerBFS webCrawlerBFS = new WebCrawlerBFS();
-        webCrawlerBFS.discoveredWeb("https://www.bbc.com/");
+        webCrawlerBFS.discoveredWeb("https://www.google.com/");
     }
 
 }

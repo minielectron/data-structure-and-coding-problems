@@ -1,6 +1,7 @@
 package datastructure.graphs.udemy.shortestpath;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -27,7 +28,6 @@ public class DijkstraAlgorithm {
                 if (distance < v.getDistance()) {
 
                     // Relaxation step
-                    queue.remove(v);
                     v.setDistance(distance);
                     v.setPredecessor(actualVertex);
                     queue.add(v);

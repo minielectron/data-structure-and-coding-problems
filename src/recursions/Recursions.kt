@@ -61,9 +61,17 @@ class Recursions {
     }
 
     fun test(n: Int, second: Int) {
-        if (n == 0) return
-        test(n - 1, 5)
-        if (n % 2 != 0) println(n + second)
+        when {
+            n > 5 -> {
+                println("Greater than five")
+            }
+            n > 6 -> {
+                println("Greater than five")
+            }
+            n > 7 -> {
+                println("Greater than five")
+            }
+        }
     }
 }
 

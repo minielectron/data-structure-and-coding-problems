@@ -1,7 +1,6 @@
 package datastructure.graphs.udemy.kruskals;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class App {
 
@@ -34,5 +33,26 @@ public class App {
 
         KruskalAlgorithm algorithm = new KruskalAlgorithm();
         algorithm.run(vertexList, edgeList);
+        printGraph(vertexList, edgeList);
+    }
+
+    public static void printGraph(List<Vertex> vertices, List<Edge> edges) {
+        Map<String, List<String>> adjacencyList = new HashMap<>();
+
+        // Initialize adjacency list
+        for (Vertex v : vertices) {
+            adjacencyList.put(v.getName(), new ArrayList<>());
+        }
+
+        // Populate adjacency list
+        for (Edge edge : edges) {
+            adjacencyList.get(edge.getSourceVertex().getName()).add(edge.getTargetVertex().getName() + "(" + edge.getWeight() + ")");
+        }
+
+        // Print adjacency list
+        System.out.println("Graph (Adjacency List Representation):");
+        for (Map.Entry<String, List<String>> entry : adjacencyList.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + String.join(", ", entry.getValue()));
+        }
     }
 }

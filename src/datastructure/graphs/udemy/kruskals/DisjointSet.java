@@ -19,26 +19,20 @@ public class DisjointSet {
         vertex.setNode(node);
     }
 
-    // find the representative for node 'node'
+    /**
+     * This finds the representative or parent of given node.
+     * */
     public Node find(Node node) {
-        Node actual = node;
-
-        while (actual.getParent() != null) {
-            actual = actual.getParent();
+        if (node.getParent() == null) {
+            return node; // This is the root
         }
 
-        // path compression to make sure the next time we look for the representative of node we have O(1)
-        Node root = actual;
-        actual = node;
-
-        while (actual != root) {
-            Node temp = actual.getParent();
-            actual.setParent(root); // path compression
-            actual = temp;
-        }
-
+        // Path compression: directly attach node to root
+        Node root = find(node.getParent());
+        node.setParent(root);
         return root;
     }
+
 
 
     //

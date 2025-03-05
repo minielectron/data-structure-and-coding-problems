@@ -21,6 +21,8 @@ public class TopologicalOrderingSP {
     public void dfs(Vertex vertex) {
         vertex.setVisited(true);
 
+        // Here we are using edges not the vertex, as we need to explore the edges and check which one is
+        // Having min weight.
         for (Edge neighbour : vertex.getNeighbourList()) {
             if (!neighbour.getTarget().isVisited()) {
                 dfs(neighbour.getTarget());

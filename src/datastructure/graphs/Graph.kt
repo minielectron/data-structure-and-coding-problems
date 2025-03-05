@@ -333,18 +333,9 @@ class Graph(private val V: Int, private val E: Int) {
             }
         }
 
-        println("Graph")
-        graph.forEach {
-            println(it)
-        }
-        println("Transpose")
-        transposeGraph.forEach {
-            println(it)
-        }
         // Step 3 -- Do DFS on stack nodes
 
         println("Stack")
-        println(stack)
         while (stack.isNotEmpty()) {
             val node = stack.pop()
             if (!visited[node]) {

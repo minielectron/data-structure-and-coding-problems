@@ -9,7 +9,8 @@ public class ShortestPath {
 
     public ShortestPath(List<Vertex> graph) {
         this.topologicalOrdering = new TopologicalOrderingSP(graph);
-        graph.get(0).setMinDistnace(0);
+        // Distance of first node from itself will be zero.
+        graph.get(0).setMinDistance(0);
     }
 
     public void compute(){
@@ -20,8 +21,11 @@ public class ShortestPath {
 
             for (Edge e: u.getNeighbourList()){
                 Vertex v = e.getTarget();
-                if (v.getMinDistnace()  > u.getMinDistnace() + e.getWeight()){
-                    v.setMinDistnace(u.getMinDistnace() + e.getWeight());
+
+                // If there is path from s -> v via u where distance[u] + weight < distance[v]
+                // Then we perform relaxation and update the predecessor
+                if (u.getMinDistance() + e.getWeight() < v.getMinDistance() ){
+                    v.setMinDistance(u.getMinDistance() + e.getWeight());
                     v.setPredecessor(u);
                 }
             }

@@ -25,7 +25,7 @@ Application
 - Shortest path only for directed acyclic graph [O(V+E)] linear runtime
 
 # Dynamic programming
-We can convert the dynamic problems in DAG and solve it in line time
+We can convert the dynamic problems in DAG and solve it in linear time
 
 # Cycle detection
 
@@ -60,7 +60,7 @@ T(n) = O(E + V)
 
 - Avoid recalculating the same problems over and over again.
 - It uses extra memory (memoization or tabulation) to store the sub-results.
-- optimal substructure - If an optimal solution
+- optimal substructure - If an optimal solution can be constructed from combining optimal solution of its subproblems.
 - overlapping sub problems
 
 # Kruskal's algorithm

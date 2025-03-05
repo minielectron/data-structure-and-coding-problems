@@ -6,8 +6,8 @@ import java.util.List;
 public class Vertex {
     private String name;
     private boolean visited;
-    private int minDistnace; // shortest from source to vertex
-    private Vertex predecessor;
+    private int minDistance; // shortest from source to vertex
+    private Vertex predecessor; // previous node in shortest path
     List<Edge> neighbourList;
 
     public Vertex getPredecessor() {
@@ -18,12 +18,12 @@ public class Vertex {
         this.predecessor = predecessor;
     }
 
-    public int getMinDistnace() {
-        return minDistnace;
+    public int getMinDistance() {
+        return minDistance;
     }
 
-    public void setMinDistnace(int minDistnace) {
-        this.minDistnace = minDistnace;
+    public void setMinDistance(int minDistance) {
+        this.minDistance = minDistance;
     }
 
     public boolean isVisited() {
@@ -36,7 +36,7 @@ public class Vertex {
 
     public Vertex(String name) {
         this.name = name;
-        this.minDistnace = Integer.MAX_VALUE;
+        this.minDistance = Integer.MAX_VALUE;
         this.neighbourList = new ArrayList<>();
     }
 

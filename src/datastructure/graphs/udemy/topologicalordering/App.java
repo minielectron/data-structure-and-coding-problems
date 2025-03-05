@@ -24,7 +24,7 @@ public class App {
         graph.get(5).addNeighbour(graph.get(0));
         graph.get(5).addNeighbour(graph.get(2));
 
-        for (int i = 0; i < graph.size() ; i++){
+        for (int i = 0; i < graph.size() ; i++){ // For disjoint graphs
             if (!graph.get(i).isVisited()){
                 ordering.dfs(graph.get(i));
             }

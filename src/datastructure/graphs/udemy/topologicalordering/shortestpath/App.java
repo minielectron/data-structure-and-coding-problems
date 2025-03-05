@@ -14,18 +14,23 @@ public class App {
         Vertex v4 = new Vertex("D");
         Vertex v5 = new Vertex("E");
 
-        v0.addEdge(new Edge(v1, -1)); // negated for cmp implementation
-        v0.addEdge(new Edge(v3, -2));
+        // CPM -> Critical path method
+        // Your task in this exercise is to find the longest path in a DAG -
+        // you can use the topological ordering related shortest path approach as a starting point.
+        // This will find the longest path between vertex. In Non-DAG it's NP-Hard problem
 
-        v1.addEdge(new Edge(v2, -6));
+        v0.addEdge(new Edge(v1, 1));
+        v0.addEdge(new Edge(v3, 2));
 
-        v2.addEdge(new Edge(v4, -1));
-        v2.addEdge(new Edge(v5, -4));
+        v1.addEdge(new Edge(v2, 6));
 
-        v3.addEdge(new Edge(v1, -4));
-        v3.addEdge(new Edge(v4, -3));
+        v2.addEdge(new Edge(v4, 1));
+        v2.addEdge(new Edge(v5, 4));
 
-        v3.addEdge(new Edge(v5, -1));
+        v3.addEdge(new Edge(v1, 4));
+        v3.addEdge(new Edge(v4, 3));
+
+        v3.addEdge(new Edge(v5, 1));
 
         graph.add(v0);
         graph.add(v1);
@@ -38,7 +43,7 @@ public class App {
         path.compute();
 
         for(Vertex v : graph){
-            System.out.println("Distance from s:" + v.getMinDistnace() +" - "+ v.getPredecessor());
+            System.out.println("Distance from s:" + v.getMinDistance() +" - pre "+ v.getPredecessor());
         }
 
     }

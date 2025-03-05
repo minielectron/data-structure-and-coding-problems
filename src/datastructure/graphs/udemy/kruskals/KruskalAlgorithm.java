@@ -4,10 +4,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+// It's greedy algorithm
+/*
+* Steps : 1 - sort the edges according to their weights O(ElogE)
+*
+* */
 public class KruskalAlgorithm {
 
     public void run(List<Vertex> vertexList, List<Edge> edgeList){
 
+        // Makes algorithm faster using path compression
+        // Lookup -- O(1)
         DisjointSet disjointSet = new DisjointSet(vertexList);
 
         List<Edge> mst = new ArrayList<>();

@@ -13,7 +13,7 @@ public class Vertex implements Comparable<Vertex>{
     // Distance from source vertex
     private double distance;
 
-    // The previous vertex
+    // The previous vertex, helps in creating routes
     private Vertex predecessor;
 
     public Vertex(String name) {

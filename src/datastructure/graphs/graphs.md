@@ -47,4 +47,42 @@ Algorithms
 - A * Search
 - Floyd warshall algorithm
 
+# MST  
+- Minimum spanning tree is tree with total sum of edge weight is minimum.
+  
+  - Kruskals algorithms - Disjoint set[Edge based] - Greedy - O(ElogE)
+  - Lazy Prims algorithm - Priority queue[Vertex based]
+  - Eager Prims algorithm O(E + VLogV) if we use fibonacci-heap
+  - Prim's algorithm is significantly faster than kruskal's approach for dense graph
+    
+    - Application
+      - Optimization problems
+        - Computer networks
+        - Telecommunication networks
+        - Transportation networks
+        - Water supply networks
+        - Electrical grids etc
+      - Routing in LANs
+      - Machine learning clustering - unsupervised learning
+      - Recommendation systems [Maximum spanning trees]
+
+# Strongly connected components
+
+- A G(V,E) graph is connected if all it's vertices are connected.
+- A graph is SCC if we can get from any vertex to any other vertex
+- Undirected graphs are SCC by definition
+- These clusters can be discovered with DFS
+- we can find SCC of graph in O(V)
+- If we shrink each component to a vertex these vertices form a DAG.
+- This is condensation of the given graph
+  - So a directed graph is DAG only if there is no subgraph that is strongly connected
+
+    Applications
+    - 
+      - Ecology - We can determine the hierarchy of food chains and the strongly connected
+        clusters are dependent on each other.
+      - Software Engineering 
+      - Recommender systems
+      - 
+
  

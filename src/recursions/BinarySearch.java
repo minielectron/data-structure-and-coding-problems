@@ -6,13 +6,12 @@ public class BinarySearch {
     public boolean binarySearch(int[] arr, int start, int end, int k) {
         if (start > end) return false;
         int mid = start + ((end - start) / 2);
-        if (arr[mid] == k) return true;
-        if (arr[mid] < k) {
+        if (arr[mid] == k) {
+            return true;
+        } else if (arr[mid] < k) {
             return binarySearch(arr, mid + 1, end, k);
-        } else if (arr[mid] > k){
+        } else {
             return binarySearch(arr, start, mid - 1, k);
-        }else {
-            return false;
         }
     }
 

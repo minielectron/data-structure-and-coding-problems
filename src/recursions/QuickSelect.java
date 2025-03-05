@@ -65,6 +65,6 @@ public class QuickSelect {
         System.out.println(quickSelect.select(2));
         System.out.println(quickSelect.select(1));
         System.out.println(quickSelect.select(3));
-        quickSelect.sort();
+//        quickSelect.sort();
     }
 }
